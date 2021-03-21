@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "moves-list.component.scss"
+    ],
+    "names": [],
+    "file": "moves-list.component.css"
+}

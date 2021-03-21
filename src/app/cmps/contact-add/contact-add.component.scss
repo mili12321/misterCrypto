@@ -1,0 +1,199 @@
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+$clr1: rgb(15, 52, 73);
+$clr3: rgb(206, 57, 114);
+
+@mixin flexCenter($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+@mixin flex($direction,$content){
+    display: flex;
+    justify-content: $content;
+    align-items: center;
+    flex-direction: $direction;
+}
+.edit-container{
+    @include flexCenter(column);
+    margin: auto;
+    position: relative;
+}
+form{
+    @include flexCenter(column);  
+}
+
+input, button, select, option, .checkbox{
+    width: 300px;
+    padding: 10px;
+    border-radius:4px;
+    background-color: rgb(2, 32, 49);
+    border: none;
+    margin: 5px;
+    color: #f0f0f0;
+    &:focus {
+        color: $clr3;
+        background-color: rgb(2, 32, 49);
+    }
+}
+.form-input{
+    color: #f0f0f0;
+    width: 300px;
+    background-color: rgb(2, 32, 49);
+    border: 1px solid rgb(2, 32, 49);
+    &:focus {
+        color: $clr3;
+        background-color: rgb(2, 32, 49);
+    }
+}
+select, option, label{
+    cursor: pointer;
+}
+input[type=checkbox] { display:none; }
+input[type=checkbox] + label:before {
+    font-family: FontAwesome;
+    display: inline-block;
+    cursor: pointer;
+}
+input[type=checkbox] + label:before { content: "🤍"; } /* unchecked icon */
+input[type=checkbox] + label:before { letter-spacing: 5px; } /* space between checkbox and label */
+  
+input[type=checkbox]:checked + label:before { content: "❤️"; } /* checked icon */
+input[type=checkbox]:checked + label:before { letter-spacing: 5px; } /* allow space for check mark */
+button{
+    width: 100px;
+    background-color: $clr3;
+    color: rgb(238, 238, 238);
+    cursor: pointer;
+ }
+
+ img{
+    margin:10vh auto 10px;
+    border: 5px solid;
+    border-radius: 50%;
+    background-color: gray;
+}
+
+.back-btn{
+    border-radius: 20px;
+    margin: 10px 40px;
+    width: 20%;
+    max-width: 80px;
+    padding: 5px;
+    cursor: pointer;
+    text-align: center;
+    background-color: $clr3;
+    transition: all 0.2s ease-in-out;
+    &:hover{
+        background-color: #e7328a;
+    }
+    &:hover >.fa-back{
+        margin-right: 5px;
+    }
+}
+.fa-back{
+    transition: all 0.2s ease-in-out;
+}
+
+.img-container{
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-size:103%;
+    margin:10vh auto 20px;
+    border: 5px solid;
+    border-radius: 50%;
+    background-color: gray;
+    width: 120px;
+    height: 120px;
+    transition: 0.2s;
+    position: relative;
+    &:hover{
+        opacity: 0.9;
+        cursor: pointer;
+    }
+    &:hover .edit-img{
+        visibility:visible;
+    }
+    .edit-img{
+        font-size: 25px;
+        position: absolute;
+        bottom: 10px;
+        right:10px;
+        visibility: hidden;
+    }  
+}
+
+.avatar-modal{
+    height: fit-content; 
+    min-height: 70vh;
+    position: absolute;
+    top: 0;
+    max-width: 800px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.897);
+    padding: 30px;
+    .close-btn{
+        font-size: 25px;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+    .img-container{
+        margin: 35px auto 45px;
+    }
+    .imgs{
+        @include flexCenter(row);
+        flex-wrap: wrap;
+        .modal-img-container{
+            margin:10px;
+            div{
+                background-position: center; 
+                background-repeat: no-repeat;
+                background-size: cover;
+                // background-size:103%;
+                border: 2px solid;
+                border-radius: 50%;
+                background-color: gray;
+                width: 50px;
+                height: 50px;
+                transition: 0.2s;
+                &:hover{
+                    cursor: pointer;
+                    -moz-box-shadow: 0 0 13px #ccc;
+                    -webkit-box-shadow: 0 0 13px #ccc;
+                    box-shadow: 0 0 13px #ccc;
+                }
+            }
+        }
+    }
+}
+
+// .imgs{
+//     @include flexCenter(row);
+//     flex-wrap: wrap;
+//     .modal-img-container{
+//         margin:10px;
+//         div{
+//             background-position: center; 
+//             background-repeat: no-repeat;
+//             background-size: cover;
+//             // background-size:103%;
+//             border: 2px solid;
+//             border-radius: 50%;
+//             background-color: gray;
+//             width: 50px;
+//             height: 50px;
+//             transition: 0.2s;
+//             &:hover{
+//                 cursor: pointer;
+//                 -moz-box-shadow: 0 0 13px #ccc;
+//                 -webkit-box-shadow: 0 0 13px #ccc;
+//                 box-shadow: 0 0 13px #ccc;
+//             }
+//         }
+//     }
+// }

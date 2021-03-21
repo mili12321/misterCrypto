@@ -1,0 +1,94 @@
+  <div class="contact-page">
+    <div class="side-container">
+      <div class="phone-sort-filter">
+        <div class="phone-filter">
+          <contact-filter  (onFilter)="onFilterHandler($event)" [category]="category" ></contact-filter>
+        </div>
+        <div class="favorites" [ngClass]="{'active-category-fav': activeBtn==='btn6'}"  (click)="onFavContacts('btn6')" >
+          <span>
+            <fa-icon [icon]="faStar"></fa-icon><span> Favorites</span>
+          </span>
+          <span class="fav-btn" [ngClass]="{'btn-active': activeBtn==='btn6'}">
+            <span >{{fav}}</span>
+          </span>
+        </div>
+        <div (click)="onCategoryContacts('co-worker', 'btn1')" class="category"  [ngClass]="{'active-category': activeBtn==='btn1'}" >Co-workers <span class="number" [ngClass]="{'btn-active': activeBtn==='btn1'}">{{work}}</span></div>
+        <div (click)="onCategoryContacts('family', 'btn2')" class="category" [ngClass]="{'active-category': activeBtn==='btn2'}">Family <span class="number" [ngClass]="{'btn-active': activeBtn==='btn2'}">{{family}}</span></div>
+        <div (click)="onCategoryContacts('friend', 'btn3')" class="category" [ngClass]="{'active-category': activeBtn==='btn3'}">Friends <span class="number" [ngClass]="{'btn-active': activeBtn==='btn3'}">{{friend}}</span></div>
+        <div (click)="onCategoryContacts('other', 'btn4')" class="category" [ngClass]="{'active-category': activeBtn==='btn4'}">Others <span class="number" [ngClass]="{'btn-active': activeBtn==='btn4'}">{{other}}</span></div>
+        <div (click)="onCategoryContacts('', 'btn5')" class="category" [ngClass]="{'active-category': activeBtn==='btn5'}">
+          All 
+          <span class="number" [ngClass]="{'btn-active': activeBtn==='btn5'}">{{contacts.length}}</span>
+       </div>
+       <a [routerLink]="['/edit']">
+        <div class="add-contact">
+          Add contact
+        </div>
+       </a>
+
+      </div>
+
+        <div class="continer">
+          <contact-filter  (onFilter)="onFilterHandler($event)" [category]="category" ></contact-filter>
+       <div class="favorites" [ngClass]="{'active-category-fav': activeBtn==='btn6'}"  (click)="onFavContacts('btn6')" >
+        <span>
+          <fa-icon [icon]="faStar"></fa-icon><span> Favorites</span>
+        </span>
+        <span class="fav-btn" [ngClass]="{'btn-active': activeBtn==='btn6'}">
+          <span >{{fav}}</span>
+        </span>
+      </div>
+     <div *ngFor="let fav of favContacts" class="desktop-view">
+
+      <div class="avatar"></div>
+    </div>
+   <div class="fav-container">
+    
+
+    <a *ngFor="let contact of partOfFavoriteContacts" [routerLink]="['/contacts', contact._id]">
+      <div class="img-container" [ngStyle]="{'background-image':'url(' + imageUrl + contact.img + imageFormat + ')'}"
+      ></div>
+    </a>
+
+
+   </div>
+     
+     <div class="groups-title"><fa-icon [icon]="faUserFriends"></fa-icon> All Groups</div>
+     <div class="categories-container">
+       <div (click)="onCategoryContacts('co-worker', 'btn1')" class="category"  [ngClass]="{'active-category': activeBtn==='btn1'}" >Co-workers <span class="number" [ngClass]="{'btn-active': activeBtn==='btn1'}">{{work}}</span></div>
+       <div (click)="onCategoryContacts('family', 'btn2')" class="category" [ngClass]="{'active-category': activeBtn==='btn2'}">Family <span class="number" [ngClass]="{'btn-active': activeBtn==='btn2'}">{{family}}</span></div>
+       <div (click)="onCategoryContacts('friend', 'btn3')" class="category" [ngClass]="{'active-category': activeBtn==='btn3'}">Friends <span class="number" [ngClass]="{'btn-active': activeBtn==='btn3'}">{{friend}}</span></div>
+       <div (click)="onCategoryContacts('other', 'btn4')" class="category" [ngClass]="{'active-category': activeBtn==='btn4'}">Others <span class="number" [ngClass]="{'btn-active': activeBtn==='btn4'}">{{other}}</span></div>
+       <div (click)="onCategoryContacts('', 'btn5')" class="category" [ngClass]="{'active-category': activeBtn==='btn5'}">
+         All 
+         <span class="number" [ngClass]="{'btn-active': activeBtn==='btn5'}">{{filteredContacts.length}}</span>
+      </div>
+     </div><!-- end of categories-container -->
+     <a [routerLink]="['/edit']">
+      <div class="add-contact">
+        Add contact
+      </div>
+     </a>
+        </div>
+    </div>
+    <!-- and of side container -->
+    <div class="main-section">
+      <!-- <div class="desktop-filter">
+        <contact-filter  (onFilter)="onFilterHandler($event)"></contact-filter>
+      </div> -->
+      <contact-list [contacts] = "contacts" [onRemoveContact]="onRemoveContact" [onToggleFav]="onToggleFav" ></contact-list>
+    </div>
+  </div>
+  
+
+  <a [routerLink]="['/edit']">
+    <div class="add-btn">
+     +
+    </div>
+   </a>
+   
+
+
+
+
+<router-outlet></router-outlet>

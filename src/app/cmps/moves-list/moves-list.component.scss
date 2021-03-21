@@ -1,0 +1,133 @@
+$clr4: #59fd82;
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+  }
+  
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+  
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+      & {
+        font-size: $min-font-size;
+        @media screen and (min-width: $min-vw) {
+          font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        }
+        @media screen and (min-width: $max-vw) {
+          font-size: $max-font-size;
+        }
+      }
+    }
+}
+
+
+%move-list-title{
+    background-color: rgb(1, 22, 34);
+    padding: 10px;
+    span{
+        // font-size: 12px;
+        @include fluid-type(320px, 2200px, 10px, 14px);
+        color: #a8a8a8;
+        margin-left: 10px;
+    }
+}
+
+%move-list-container{
+    padding: 5px;
+    text-align: start;
+    border-bottom: 1px solid rgb(1, 22, 34);
+    background-color: rgb(2, 32, 49);
+    .amount{
+        color: $clr4;
+        // font-size: 16px;
+        @include fluid-type(320px, 2200px, 13px, 16px);
+        padding: 2px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .status{
+        // font-size: 14px;
+        @include fluid-type(320px, 2200px, 12px, 14px);
+        span{
+            color: #54a5f7;  
+        }
+    }
+    .date{
+        // font-size: 11px;
+        @include fluid-type(320px, 2200px, 10px, 11px);
+        color: #a8a8a8;
+        padding: 2px;
+    }
+}
+
+@media only screen and (min-width:499px){
+
+    .contact-moves{
+        .move-list{
+            width: 80vw;
+        }
+    
+    }
+}
+
+.contact-moves{
+    margin-bottom: 20px;
+    .title{
+        @extend %move-list-title;
+    }
+    .move-list{
+        @extend %move-list-container;
+    }
+
+}
+
+
+.last-moves-container{
+    padding: 20px;
+    padding-top: 0;
+    .title{
+        @extend %move-list-title;
+
+    }
+    .move-list{
+        @extend %move-list-container;
+    }
+
+}
+
+@media only screen and (min-width:57em){
+    .no-moves-message-container{
+        height: 300px;
+        background-color: #011622;
+    }
+}
+@media only screen and (max-width:57em){
+  
+    .last-moves-container{
+        padding:0;
+        padding-top: 0;
+        width: 85vw;
+        min-width: 350px;
+    }  
+    .no-moves-message-container{
+        height:0;
+        div{
+            min-width:300px;
+        }
+    }
+}
+
+.no-moves-message-container{
+    margin: 20px;
+    text-align: center;
+    div{
+        padding: 5px;
+        font-size: 20px;
+        color: rgb(138, 138, 138);
+        border-radius: 4px;
+        background-color: #011622;
+    }
+
+}

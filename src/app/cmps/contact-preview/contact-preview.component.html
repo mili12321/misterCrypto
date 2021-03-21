@@ -1,0 +1,22 @@
+
+
+<a [routerLink]="['/contacts', contact._id]">
+  <div class="contact-container" [ngClass]="(idx%2==0)?'dark-card':''">
+    <div class="img-container" [style.backgroundImage]="'url('+ img +')'"></div>
+    <div class="details-container">
+      <div class="name">{{contact.name}}</div>
+      <div class="email">{{contact.email}}</div>
+      <div class="phone" >{{contact.phone}}</div>
+    </div>
+
+    <div class="options-continer">
+      <div (click)="$event.stopPropagation();onToggleFav(contact)">
+        <fa-icon [icon]="faStar" class="faStar"  [ngClass]="{'favorite-contact': contact.isFavorite }"></fa-icon>
+      </div>
+      <div (click)="$event.stopPropagation();onRemoveContact(contact._id)">
+        <fa-icon [icon]="faUserTimes" class="faUserTimes"></fa-icon>
+      </div>
+    </div>
+
+  </div>
+</a>

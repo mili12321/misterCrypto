@@ -1,0 +1,41 @@
+
+<div class="coin-container" (click)="sendCoin()">
+    <div class="img">
+        <img src={{coin.img}} />
+    </div>
+
+    <div class="coin">
+        <div class="title">
+            <span>{{coin.name}} </span>
+            <span class="gray-style"> {{coin.symbol}}</span>
+        </div>
+        <div>{{coin.coinData.USD.PRICE}}</div>
+        <div class="gray-style">1.00</div>
+    </div>
+    <div class="change">
+       <div [ngClass]="(coin.coinData.USD.CHANGEPCTDAY.charAt(0)==='-')?'red':'green'">
+        <span  class="gray-style">D </span>
+        <span *ngIf="coin.coinData.USD.CHANGEPCTDAY.charAt(0)==='-'; else elseContent"> {{coin.coinData.USD.CHANGEPCTDAY.substr(1)}}% </span>
+        <ng-template #elseContent>{{coin.coinData.USD.CHANGEPCTDAY}}% </ng-template>
+        <span  *ngIf="coin.coinData.USD.CHANGEPCTDAY.charAt(0)!=='-'">    
+            <fa-icon class="arrow"  [icon]="faArrowUp"></fa-icon>
+        </span>
+        <span *ngIf="coin.coinData.USD.CHANGEPCTDAY.charAt(0)==='-'">
+            <fa-icon class="arrow" [icon]="faArrowDown"></fa-icon>
+        </span>
+       </div>
+       <div [ngClass]="(coin.coinData.USD.CHANGEPCT24HOUR.charAt(0)==='-')?'red':'green'">
+        <span  class="gray-style">24 </span>
+        <span *ngIf="coin.coinData.USD.CHANGEPCT24HOUR.charAt(0)==='-'; else elseContent2">
+            {{coin.coinData.USD.CHANGEPCT24HOUR.substr(1)}}% 
+        </span>
+        <ng-template #elseContent2>{{coin.coinData.USD.CHANGEPCT24HOUR}}% </ng-template>
+        <span  *ngIf="coin.coinData.USD.CHANGEPCT24HOUR.charAt(0)!=='-'">    
+            <fa-icon class="arrow"  [icon]="faArrowUp"></fa-icon>
+        </span>
+        <span *ngIf="coin.coinData.USD.CHANGEPCT24HOUR.charAt(0)==='-'">
+            <fa-icon class="arrow" [icon]="faArrowDown"></fa-icon>
+        </span>
+       </div>
+    </div>
+</div>

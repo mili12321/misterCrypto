@@ -1,0 +1,27 @@
+
+<div class="stock-chart-options">
+
+    <select [(ngModel)]="selectedFromCoin">
+        <option *ngFor="let coin of fromCoins" [ngValue]="coin">{{coin}}</option>
+    </select>
+    <select [(ngModel)]="selectedToCoin">
+        <option *ngFor="let coin of toCoins" [ngValue]="coin">{{coin}}</option>
+    </select>
+    <input type="text" [(ngModel)]="selectedDays" >
+
+    <button (click)="getDailyPair()">search</button>
+</div>
+
+
+
+<div>
+<ejs-chart style='display:block; height: 250px;' id='chart-container' [primaryXAxis]='primaryXAxis' [primaryYAxis]='primaryYAxis'  [chartArea]='chartArea' [border]='border'  background='transparent'>
+    <e-series-collection>
+        <e-series [dataSource]='data' type='Candle' xName='time' high='high' low='low' open='open' close='close'  bearFillColor= 'rgb(25, 204, 115)' bullFillColor= 'rgb(206, 57, 114)'
+        [enableSolidCandles]='enableSolidCandles'> </e-series>
+    </e-series-collection>
+</ejs-chart>
+</div>
+
+
+

@@ -1,0 +1,36 @@
+
+<div *ngIf="currContactMoves" class="contact-moves">
+   <div class="title">
+      <fa-icon [icon]="faHistory"></fa-icon>  Moves History <span>{{currContactMoves.length}} moves</span>
+   </div>
+
+   <div *ngFor="let move of currContactMoves" class="move-list">
+      <div class="amount">&#8383; {{move.amount  | number : '1.2-5'}}</div>
+      <div class="status">status: <span>approve</span></div>
+      <div class="date">{{move.at| date:'medium' }}</div>
+   </div>
+
+</div>
+
+
+<!-- <div *ngIf="last3Moves.length>0; else noMoves" class="last-moves-container"> -->
+<div *ngIf="last3Moves" class="last-moves-container">
+   <div class="title"><fa-icon [icon]="faHistory"></fa-icon> Last 3 Moves</div>
+    <div *ngFor="let move of last3Moves" class="move-list">
+         <div>To {{move.to}}</div>
+         <div class="amount">&#8383; {{move.amount  | number : '1.2-5'}}</div>
+         <div class="status">status: <span>approve</span></div>
+         <div class="date">{{move.at| date:'medium' }}</div>
+     </div>
+</div>
+
+<ng-template #noMoves>
+   <div class="no-moves-message-container">
+      <div class="title"><fa-icon [icon]="faHistory"></fa-icon> No Recorded Moves</div>
+   </div>
+   <!-- <div class="no-moves-message-container">
+      <div>No</div>
+      <div>Recorded</div>
+      <div>Moves</div>
+   </div> -->
+</ng-template>

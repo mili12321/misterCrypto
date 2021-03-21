@@ -1,0 +1,64 @@
+
+<div class="home-container">
+
+  <div class="left-section">
+    <div class="user-info">
+      <div *ngIf="user.img" class="back-img-container"  (click)="toggleModal()"  [ngStyle]="{'background-image':'url(' + imageUrl + user.img + imageFormat + ')'}"
+      >
+      </div><!-- end of img-container -->
+      <div *ngIf="!user.img" class="img-container" (click)="toggleModal()">
+        <img src="https://img.icons8.com/color/100/000000/user-male-circle.png"/>
+      </div><!-- end of img-container -->
+      <div class="name">Hello, {{getFirstName()}}</div>
+      <div class="title">Total balance</div>
+      <div>
+        <span class="coins">&#8383; {{user.coins | number : '1.2-4'}}</span>
+      </div>
+    </div>
+
+    <moves-list [last3Moves]="last3Moves" class="phone-view" ></moves-list>
+
+   <div class="coin-type-balance-container">
+      <coin-type-balance (newCryptoCoinInfo)="getNewCoin($event)" ></coin-type-balance>
+   </div>
+    
+  </div><!-- end of left-section -->
+
+
+  <div class="middle-section">
+    <div class="coin-desk-container" *ngIf="selectedCoin">
+      <coin-desk (messageToEmit)="getNewSelectedCoin($event)" [selectedCoin]="selectedCoin" [coinInfoArray]="coinInfoArray" [coinInfo]="coinInfo"></coin-desk>
+    </div>
+      <div class="stock-chart">
+        <stock-chart [dailyPair]="dailyPair"></stock-chart>
+      </div>
+    <div class="coin-24desk-section" *ngIf="selectedCoin">
+      <coin-desk24 [selectedCoin]="selectedCoin" ></coin-desk24>
+    </div>
+  </div>
+
+  <div class="right-section">
+    <div>
+      <news [dailyNews]="dailyNews"></news>
+    </div>
+    <moves-list [last3Moves]="last3Moves" class="desktop-view" ></moves-list>
+  </div>
+
+
+
+
+  <div class="modal" *ngIf="isModalOpen">
+    <fa-icon class="close-btn" (click)="toggleModal()" [icon]="faTimesCircle"></fa-icon>
+   <section class="imgs">
+    <div class="modal-img-container" *ngFor="let img of imgs" (click)="getImgNum(img)">
+      <div  [ngStyle]="{'background-image':'url(' + imageUrl + img + imageFormat + ')'}"></div>
+    </div>
+   </section>
+  </div>
+
+
+
+</div>
+
+
+

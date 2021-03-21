@@ -1,0 +1,89 @@
+@mixin flexCenter($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+@mixin flex($direction,$content){
+    display: flex;
+    justify-content: $content;
+    // align-items: center;
+    flex-direction: $direction;
+}
+
+.clear-filters-btn{
+    cursor: pointer;
+    width: 40px;
+    height: 20px;
+    margin-right: 10px;
+    margin-top: 5px;
+}
+
+
+
+.filter-container{
+    @include flexCenter(row);
+    width:100%;
+    margin: auto;
+    background-color: #162a3b;;
+    position: relative;
+    input{
+        background-color:#162a3b;;
+        border: none;
+        border-bottom: 1px solid rgb(116, 116, 116);
+        padding:7px; 
+        margin: 10px; 
+        text-align: center;
+        color: #f0f0f0;
+        &:focus {
+            outline: none;
+            color: #f0f0f0;
+        }
+        width: 80%;
+    }
+}
+.search-icon{
+    color:rgb(116, 116, 116);
+    position: absolute;
+    left:10%;
+}
+
+
+
+
+@media only screen and (min-width:1200px) and (max-width:1480px){
+    input::placeholder {
+        font-size: 10px;
+    }
+}
+
+@media only screen and (min-width:912px) and (max-width:1200px){
+    input::placeholder {
+        color:transparent;
+        text-align: center;
+    }
+    input {
+        // background-image:url("/assets/img/icon-search.png");
+        // background-repeat: no-repeat;
+     }
+     .user-search{
+        // background: url("/assets/img/user-search.png");
+        background-image:url("/assets/img/search-user2.png");
+        // background-image:url("/assets/img/user-search.png");
+        background-size: 25px;
+        background-repeat: no-repeat;
+     }
+     .phone-search{
+        background-image:url("/assets/img/search-phone.png");
+        // background-image:url("/assets/img/search1.png");
+        // background-image:url("/assets/img/phone-search.png");
+        // background-image:url("/assets/img/search (6).png");
+        background-size: 25px;
+        background-repeat: no-repeat;
+     }
+
+     input:focus {
+        background-image: none;
+     }
+}
+

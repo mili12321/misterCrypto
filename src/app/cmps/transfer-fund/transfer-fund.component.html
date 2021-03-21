@@ -1,0 +1,29 @@
+
+<div class="transfer-container">
+    <!-- <input type="number" [(ngModel)]="amount" placeholder="amount">
+    <button (click)="transferAmount()">Transfer</button> -->
+    <input type="number" [(ngModel)]="amount"  min="0" >
+    <button (click)="addNewItem(amount)" >Transfer</button>
+    <div class="user-amount">Available funds: ₿ {{user.coins }}</div>
+    <!-- <div class="message-container" [ngClass]="[messageClass]">{{message}}</div> -->
+
+</div>
+<section>
+    <div *ngIf="message" class="user-msg-continer">
+        <div class="msg-content">
+            <div class="before"  [style.background]="getBeforeStyle()"></div>
+            <div *ngIf="this.symbol === '1'" class="icon" [style.background]="getIconStyle()">!</div>
+            <div *ngIf="this.symbol === '2'" class="icon" [style.background]="getIconStyle()"> &#x2714; </div>
+            <div *ngIf="this.symbol === '3'" class="icon" [style.background]="getIconStyle()">X</div>
+            <div class="text">
+                <p>{{messageType}}</p>
+                <p class="message">{{message}}</p>
+            </div>
+            <!-- <div class="close">&#x00D7;</div> -->
+        </div>
+    </div>
+</section>
+
+
+<!-- <label>Add an item: <input #newItem></label> -->
+<!-- <button (click)="addNewItem(newItem.value)">Add to parent's list</button> -->

@@ -1,0 +1,289 @@
+
+<div class="coin-desk-container" *ngIf="selectedCoin">
+
+    <div class="coin-desk-section">
+        <div class="main-title">
+            <span>{{coinInfo.name}}</span>
+            <span> {{coinInfo.symbol}}</span>
+        </div>
+        <div class="coin-desk">
+            <div class="coin-desk-content">
+                <div class="container">
+                    <div class="title">price</div>
+                    <div class="info">{{selectedCoin.PRICE}}</div>
+                </div> 
+                <div class="container">
+                    <div class="title">24 hour % change</div>
+                    <div class="info" [ngClass]="(selectedCoin.CHANGEPCT24HOUR.charAt(0)==='-')?'red':'green'">
+                        <span *ngIf="selectedCoin.CHANGEPCT24HOUR.charAt(0)==='-'; else elseContent">{{selectedCoin.CHANGEPCT24HOUR.substr(1)}}% </span>
+                        <ng-template #elseContent> {{selectedCoin.CHANGEPCT24HOUR}}% </ng-template>
+                        <span  *ngIf="selectedCoin.CHANGEPCT24HOUR.charAt(0)!=='-'">    
+                            <fa-icon class="arrow"  [icon]="faArrowUp"></fa-icon>
+                        </span>
+                        <span *ngIf="selectedCoin.CHANGEPCT24HOUR.charAt(0)==='-'">
+                            <fa-icon class="arrow" [icon]="faArrowDown"></fa-icon>
+                        </span>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="title">market cap</div>
+                    <div class="info">{{selectedCoin.MKTCAP}}</div>
+                </div>
+                <div class="container">
+                    <div class="title">volume (24h)</div>
+                    <div class="info">{{selectedCoin.TOTALVOLUME24HTO}}</div>
+                </div>
+            </div>
+            <div>
+                <div class="coin-btn">
+                    <select [(ngModel)]="selectedCoin" #coin (change)="onChange(selectedCoin)">
+                        <option *ngFor="let coin of coinInfoArray" [ngValue]="coin" >{{coin.NAME}}</option>
+                    </select>
+                </div>
+            </div>
+        </div><!-- end of coin-desk -->
+    </div>
+    
+    
+    
+    <!-- <div class="coin-24desk-section" *ngIf="selectedCoin">
+        <coin-desk24 [selectedCoin]="selectedCoin"></coin-desk24>
+        <div class="container">
+            <div class="title">24 hour low</div>
+            <div class="info">{{selectedCoin.LOW24HOUR}}</div>
+        </div>
+        <div class="container">
+            <div class="title">24 hour high</div>
+            <div class="info">{{selectedCoin.HIGH24HOUR}}</div>
+        </div>
+        <div class="container">
+            <div class="title">net change</div>
+            <div class="info">{{selectedCoin.CHANGE24HOUR}}</div>
+        </div>
+        <div class="container">
+            <div class="title">24 hour open</div>
+            <div class="info">{{selectedCoin.OPEN24HOUR}}</div>
+        </div>
+    </div> -->
+
+    
+
+</div>
+
+
+
+
+<!-- /*************************************************************************** -->
+
+
+<!-- 
+
+<div class="coin-desk-container" *ngIf="selectedCoin">
+
+    <div class="coin-desk-section">
+        <div class="main-title">
+            <span>Bitcoin</span>
+            <span> BTC</span>
+        </div>
+            <div class="coin-desk">
+                <div class="container">
+                    <div class="title">price</div>
+                    <div class="info">{{selectedCoin.PRICE}}</div>
+                </div> 
+                <div class="container">
+                    <div class="title">24 hour % change</div>
+                    <div class="info" [ngClass]="(selectedCoin.CHANGEPCT24HOUR.charAt(0)==='-')?'red':'green'">
+                        {{selectedCoin.CHANGEPCT24HOUR}}%
+                        <span  *ngIf="selectedCoin.CHANGEPCT24HOUR.charAt(0)!=='-'">    
+                            <fa-icon class="arrow"  [icon]="faArrowUp"></fa-icon>
+                        </span>
+                        <span *ngIf="selectedCoin.CHANGEPCT24HOUR.charAt(0)==='-'">
+                            <fa-icon class="arrow" [icon]="faArrowDown"></fa-icon>
+                        </span>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="title">market cap</div>
+                    <div class="info">{{selectedCoin.MKTCAP}}</div>
+                </div>
+                <div class="container">
+                    <div class="title">volume (24h)</div>
+                    <div class="info">{{selectedCoin.TOTALVOLUME24HTO}}</div>
+                </div>
+                <div>
+                    <div class="coin-btn">
+                        <select [(ngModel)]="selectedCoin" #coin (change)="onChange(selectedCoin)">
+                            <option *ngFor="let coin of coinInfoArray" [ngValue]="coin" >{{coin.NAME}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+</div>    -->
+    
+    <!-- <div class="coin-24desk-section" *ngIf="selectedCoin">
+        <coin-desk24 [selectedCoin]="selectedCoin"></coin-desk24>
+        <div class="container">
+            <div class="title">24 hour low</div>
+            <div class="info">{{selectedCoin.LOW24HOUR}}</div>
+        </div>
+        <div class="container">
+            <div class="title">24 hour high</div>
+            <div class="info">{{selectedCoin.HIGH24HOUR}}</div>
+        </div>
+        <div class="container">
+            <div class="title">net change</div>
+            <div class="info">{{selectedCoin.CHANGE24HOUR}}</div>
+        </div>
+        <div class="container">
+            <div class="title">24 hour open</div>
+            <div class="info">{{selectedCoin.OPEN24HOUR}}</div>
+        </div>
+    </div> -->
+
+    
+
+
+
+
+
+<!-- /*************************************************************************** -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- <coin-desk24 [selectedCoin]="selectedCoin" ></coin-desk24> -->
+
+
+
+<!-- <div *ngFor="let coin of coinInfoArray">
+    <div class="coin-desk">
+        <div class="container">
+            <div class="title">price</div>
+            <div class="info">{{coin.PRICE}}</div>
+        </div> 
+        <div class="container">
+            <div class="title">24 hour % change</div>
+            <div class="info">{{coin.CHANGEPCT24HOUR}}%</div>
+        </div>
+        <div class="container">
+            <div class="title">market cap</div>
+            <div class="info">{{coin.MKTCAP}}</div>
+        </div>
+        <div class="container">
+            <div class="title">volume (24h)</div>
+            <div class="info">{{coin.TOTALVOLUME24HTO}}</div>
+        </div>
+        <div>
+            <div class="coin-btn">
+                {{coin.NAME}}
+            </div>
+        </div>
+    </div>
+   
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+
+<div class="coin-desk-section">
+    <div class="main-title">
+        <span>{{bitData.name}}</span>
+        <span> {{bitData.symbol}}</span>
+    </div>
+    <div class="coin-desk">
+        <div class="container">
+            <div class="title">price</div>
+            <div class="info">{{bitData.coinInfo.USD.PRICE}}</div>
+        </div> 
+        <div class="container">
+            <div class="title">24 hour % change</div>
+            <div class="info">{{bitData.coinInfo.USD.CHANGEPCT24HOUR}}%</div>
+        </div>
+        <div class="container">
+            <div class="title">market cap</div>
+            <div class="info">{{bitData.coinInfo.USD.MKTCAP}}</div>
+        </div>
+        <div class="container">
+            <div class="title">volume (24h)</div>
+            <div class="info">{{bitData.coinInfo.USD.TOTALVOLUME24HTO}}</div>
+        </div>
+        <div>
+            <div class="coin-btn">
+                usd
+            </div>
+        </div>
+    </div>
+    
+</div> -->
+

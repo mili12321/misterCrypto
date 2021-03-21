@@ -1,0 +1,90 @@
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
+
+
+@function strip-unit($value) {
+    @return $value / ($value * 0 + 1);
+  }
+  
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+    $u1: unit($min-vw);
+    $u2: unit($max-vw);
+    $u3: unit($min-font-size);
+    $u4: unit($max-font-size);
+  
+    @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+      & {
+        font-size: $min-font-size;
+        @media screen and (min-width: $min-vw) {
+          font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+        }
+        @media screen and (min-width: $max-vw) {
+          font-size: $max-font-size;
+        }
+      }
+    }
+}
+
+.login-section{
+    flex-grow: 1;
+    height: 100%;
+    position: relative;
+    height: 100vh;
+    background-image:
+    radial-gradient( rgb(11, 11, 68),
+    rgb(6, 6, 53),rgb(5, 5, 41), rgb(2, 2, 15)
+    );
+}
+
+   
+.form-section{
+    h3{
+        // white-space: nowrap;
+        @include fluid-type(320px, 2200px, 22px, 35px);
+        font-weight: bold;
+        // margin-bottom:50px;
+        margin-bottom:15px;
+        span{
+            color: rgb(10, 193, 142);
+            // color: #5941b1;
+        }
+    }
+    p{
+        @include fluid-type(320px, 2200px, 14px, 22px);
+        margin-bottom:40px;
+    }
+    form{
+        width: 50%;
+        max-width: 500px;
+        margin: auto;
+        margin-top: 35px;
+    }
+    position: absolute;
+    z-index: 100;
+    width: 100%;
+}
+
+.login-img{
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    img{
+        width: 50vw;
+        max-width: 500px;
+    }
+    z-index: 99;
+}
+
+.nounderline {
+    text-decoration: none !important
+}
+#particles-js{
+    position:absolute !important;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 2;
+}
+

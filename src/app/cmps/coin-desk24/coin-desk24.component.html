@@ -1,0 +1,27 @@
+<div class="coin-24desk-section" *ngIf="selectedCoin">
+    <div class="container">
+        <div class="title">24 hour low</div>
+        <div class="info">{{selectedCoin.LOW24HOUR}}</div>
+    </div>
+    <div class="container">
+        <div class="title">24 hour high</div>
+        <div class="info">{{selectedCoin.HIGH24HOUR}}</div>
+    </div>
+    <div class="container">
+        <div class="title">net change</div>
+        <div class="info" [ngClass]="(selectedCoin.CHANGE24HOUR.charAt(2)==='-')?'red':'green'">
+           <span *ngIf="selectedCoin.CHANGE24HOUR.charAt(2)==='-'; else elseContent">$ {{selectedCoin.CHANGE24HOUR.substr(3)}} </span>
+           <ng-template #elseContent>{{selectedCoin.CHANGE24HOUR}} </ng-template>
+            <span  *ngIf="selectedCoin.CHANGE24HOUR.charAt(2)!=='-'">    
+                <fa-icon class="arrow"  [icon]="faArrowUp"></fa-icon>
+            </span>
+            <span *ngIf="selectedCoin.CHANGE24HOUR.charAt(2)==='-'">
+                <fa-icon class="arrow" [icon]="faArrowDown"></fa-icon>
+            </span>
+        </div>
+    </div>
+    <div class="container">
+        <div class="title">24 hour open</div>
+        <div class="info">{{selectedCoin.OPEN24HOUR}}</div>
+    </div>
+</div>

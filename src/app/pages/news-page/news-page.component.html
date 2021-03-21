@@ -1,0 +1,26 @@
+<div *ngIf="isLoading" class="loader">
+    <div id="preloader">
+      <div id="loader"></div>
+    </div>
+</div>
+<div class="page-title">latest news</div>
+<div class="news-list">
+    <a class="news-container" *ngFor="let item of news" [href]="item.guid" target="_blank" >
+        <div class="top-container">
+            <div class="img" [ngStyle]="{ 'background-image': 'url(' + item.imageurl + ')'}" ></div>
+            <div class="content">
+                <div class="title">{{item.title}}</div>
+                <div class="date">Published on {{item.published_on*1000 | date }}</div>
+                <div class="description">
+                    {{item.body}}
+                </div>
+            </div>
+        </div>
+        <div class="bottom-container">
+            <div class="btn">
+                Read More
+            </div>
+        </div>
+    </a><!-- end of news-container -->
+</div>
+

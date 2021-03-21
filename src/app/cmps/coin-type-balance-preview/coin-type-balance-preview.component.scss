@@ -1,0 +1,81 @@
+
+
+@mixin flexCenter($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+@mixin flex($direction,$content){
+    display: flex;
+    justify-content: $content;
+    // align-items: center;
+    flex-direction: $direction;
+}
+
+.coin-container{
+    @include flex(row,space-between);
+    width:90%;
+    margin:20px auto 0;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 4px;
+    background-color: #011622;
+    -moz-box-shadow: 0 0 3px #ccc;
+    -webkit-box-shadow: 0 0 3px #ccc;
+    box-shadow: 0 0 3px #ccc;
+    cursor: pointer;
+    img{
+        width: 25px;
+    }
+    .coin{
+        width: 50%;
+        .title{
+            span:first-child {
+                margin-right: 10px;
+            }
+        }
+        div{
+            padding-bottom: 2px;
+        }
+    }
+    .change{
+        span{
+            .arrow{
+                font-size:10px;
+            }
+        }
+    }
+    .gray-style{
+        font-size: 11px;
+        color: gray;
+    }
+}
+.green{
+    color: rgb(27, 233, 27);
+}
+.red{
+    color: rgb(240, 35, 120);
+}
+
+@media only screen and (max-width:1200px){
+    .coin-container{
+        font-size: 12px;
+    }
+}
+
+@media only screen and (max-width:57em){
+    .coin-container{
+        font-size: 14px;
+        img{
+            width: 50px;
+        }
+    }
+}
+
+@media only screen and (min-width:57em){
+    .coin-container{
+        width:80%;
+        max-width: 300px;
+    }  
+}

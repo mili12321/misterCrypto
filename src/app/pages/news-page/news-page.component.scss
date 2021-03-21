@@ -1,0 +1,188 @@
+$clr1: rgb(15, 52, 73);
+$clr2: #888787;
+$clr4: #59fd82;
+$clr3: rgb(206, 57, 114);
+$clr5: rgb(7, 38, 56);
+
+
+@mixin flexCenter($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+@mixin flex($direction,$content){
+    display: flex;
+    justify-content: $content;
+    // align-items: center;
+    flex-direction: $direction;
+}
+
+.page-title{
+text-transform: uppercase;
+margin:50px auto;
+font-size: 35px;
+text-align: center;
+}
+
+.news-list{
+    position: relative;
+    max-width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px,1fr));
+    grid-template-rows: minmax(100px,auto);
+    grid-auto-flow: dense;
+    grid-gap: 20px;
+    margin: 20px auto ;
+    .news-container{
+        text-decoration: none;
+        background-color: rgb(241, 241, 241);
+        border: 1px solid black;
+        @include flex(column, space-between);
+        word-wrap: break-word;
+        .content{
+            padding: 10px;
+            color: rgb(44, 44, 44);
+            .title{
+                font-size:18px ;
+                font-weight: bold;
+                margin-bottom: 25px;
+            }
+            .description{
+                font-size: 14px;
+                margin:10px 0;
+            }
+        }
+        .date, .tags, .categories{
+            font-size: 10px;
+            margin-bottom: 5px;
+            color: rgb(121, 121, 121);
+        }
+        .tags, .categories{
+            margin: 5px 0;  
+            padding:0 10px;
+        }
+        .img{
+            width: 100%;
+            height: 200px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            position: relative;
+            margin-bottom: 5px;
+        }
+        .btn{
+            text-align: center;
+            @include  flexCenter(row);
+            padding: 5px 30px;
+            margin:10px auto;
+            margin-top: 15px;
+            border-radius: 10px;
+            color: white; 
+            font-size: 20px;
+        }
+        cursor: pointer;
+        &:hover .bottom-container{
+            background-color: rgb(250, 19, 135);
+        }
+        .bottom-container{
+            transition: 0.2s;
+            background-color: rgb(99, 99, 238);
+        }
+    }
+}
+.dark-backround{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #0000008e;
+    color: rgb(240, 240, 240);
+}
+
+@media only screen and (max-width:400px){
+    .news-list{
+        grid-template-columns: repeat(auto-fill,minmax(200px,1fr));
+    }
+}
+
+.loader{
+    display: flex;
+    height: 100%;
+    width: 100vw;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    background-color: #1e293bb9;
+    position: absolute;
+    z-index: 100;
+    right: 0;
+    top: 0;
+    #preloader {
+        width: 100%;
+        height: 100%;
+    }
+    #loader {
+        display: block;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        width: 150px;
+        height: 150px;
+        margin: -75px 0 0 -75px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #9370DB;
+        -webkit-animation: spin 2s linear infinite;
+        animation: spin 2s linear infinite;
+    }
+    #loader:before {
+        content: "";
+        position: absolute;
+        top: 5px;
+        left: 5px;
+        right: 5px;
+        bottom: 5px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #BA55D3;
+        -webkit-animation: spin 3s linear infinite;
+        animation: spin 3s linear infinite;
+    }
+    #loader:after {
+        content: "";
+        position: absolute;
+        top: 15px;
+        left: 15px;
+        right: 15px;
+        bottom: 15px;
+        border-radius: 50%;
+        border: 3px solid transparent;
+        border-top-color: #FF00FF;
+        -webkit-animation: spin 1.5s linear infinite;
+        animation: spin 1.5s linear infinite;
+    }
+    @-webkit-keyframes spin {
+        0%   {
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+    @keyframes spin {
+        0%   {
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+}

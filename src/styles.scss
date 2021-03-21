@@ -1,0 +1,50 @@
+/* You can add global styles to this file, and also import other style files */
+@import "./assets/style/global.scss";
+
+body{
+    margin: 0;
+    background-color:  #1e293b;;
+    color: rgb(236, 236, 236);
+    overflow-x: hidden;
+    font-family: 'PT Sans', sans-serif;
+    user-select: none;
+}
+contact-page{
+    width: 100%;
+    height: 100vh;
+}
+
+
+@media only screen and (max-width:425px){
+  app-root{
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media only screen and (min-width:425px){
+  app-root{
+    flex-grow: 1;
+    display: flex;
+  }
+}
+
+home-page, login-page, register-page, news-page, contact-page, contact-details-page, contact-add, contact-edit{
+  flex-grow: 1;
+}
+contact-page{
+  background-color: white;
+}
+contact-details-page, contact-add, contact-edit{
+  background-color:  #1e293b;
+}
+news-page{
+  background-color: rgb(66, 66, 66);
+  height: 100vh;
+  display:table;
+}
+login-page, register-page{
+  background-image:
+  radial-gradient( rgb(11, 11, 68),
+  rgb(6, 6, 53),rgb(5, 5, 41), rgb(2, 2, 15));
+}
+

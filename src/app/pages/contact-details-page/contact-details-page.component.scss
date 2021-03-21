@@ -1,0 +1,104 @@
+@mixin flexCenter($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+@mixin flex($direction,$content){
+    display: flex;
+    justify-content: $content;
+    align-items: center;
+    flex-direction: $direction;
+}
+$clr1: rgb(15, 52, 73);
+$clr3: rgb(206, 57, 114);
+
+
+.contact-details-container{
+    width: 90%;
+    margin: auto;
+    @include flexCenter(column);
+    text-align:center;
+}
+.contact{
+    .contact-img{
+        background-position: center; 
+        background-repeat: no-repeat;
+        background-size: cover;
+        border: 5px solid;
+        border-radius: 50%;
+        background-color: gray;
+        margin:10px;
+        height: 120px;
+        width: 120px;
+        overflow: hidden;
+    }
+    // img{
+    //     border: 5px solid;
+    //     border-radius: 50%;
+    //     background-color: gray;
+    //     margin:10px;
+    // }
+    div{
+        padding: 3px;
+        color: rgb(233, 233, 233);
+    }
+    .name{
+        font-size: 20px;
+        color: rgb(206, 57, 114);
+        font-weight: bold;
+    }
+    .phone{
+        font-size: 14px;
+    }
+    .email{
+        font-size: 12px;
+    }
+}
+
+.btn-container{
+    @include flex(row,space-between);
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: #022031;
+
+}
+.back-btn, .edit-btn{
+    border-radius: 20px;
+    margin: 10px 40px;
+    width: 20%;
+    max-width: 80px;
+    padding: 5px;
+    cursor: pointer;
+    text-align: center;
+    background-color: $clr3;
+    &:hover{
+        background-color: #e7328a;
+    }
+}
+.back-btn{
+    &:hover >.fa-back{
+      margin-right: 5px;
+    }
+}
+a:link {
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+}
+  
+a:visited {
+    color: rgb(230, 230, 230);
+    text-decoration: none;
+}
+a{
+    cursor: pointer;
+    // &:hover{
+    //     color:$clr3;
+    // }
+}
+.fa-user-edit{
+    font-size: small;
+}
+.fa-back{
+    transition: all 0.2s ease-in-out;
+}

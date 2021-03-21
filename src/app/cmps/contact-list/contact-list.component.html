@@ -1,0 +1,17 @@
+
+        <div class="preview-header">
+            <div class="img-header">name</div>
+            <div class="preview-header-container">
+                <div class="name"></div>
+                <div class="email">email</div>
+                <div class="phone">phone</div>
+            </div>
+            <div class="actions">actions</div>
+        </div>
+        <contact-preview *ngFor = "let contact of contacts; index as i" [contact] = "contact"  [onRemoveContact]="onRemoveContact" [onToggleFav]="onToggleFav" [idx]="i+1"></contact-preview>
+   
+
+
+
+
+

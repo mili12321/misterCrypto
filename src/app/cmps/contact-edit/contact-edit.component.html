@@ -1,0 +1,54 @@
+<div (click)="onBack()" class="back-btn">
+   <fa-icon class="fa-back" [icon]="faHandPointLeft"></fa-icon>
+    Back
+</div>
+
+<div class="edit-container" >
+    <div class="img-container" [ngStyle]="{'background-image':'url(' + imageUrl + contact.img + imageFormat + ')'}"  (click)="toggleModal()">
+        <fa-icon class="edit-img" [icon]="faEdit"></fa-icon>
+    </div>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSaveContact()" >
+      <input type="text" formControlName="name" placeholder="name"  maxlength="20" class="form-control form-input" [ngClass]="{ 'is-invalid': f.name.invalid && f.name.errors }">
+      <div *ngIf="f.name.invalid && f.name.errors" class="invalid-feedback">
+        <div *ngIf="f.name.errors.required">Please fill out this field</div>
+      </div>
+      <input type="email"  formControlName="email" placeholder="Email" class="form-control form-input" [ngClass]="{ 'is-invalid': f.email.invalid && f.email.errors }">
+      <div *ngIf="f.email.invalid && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Please fill out this field</div>
+        <div *ngIf="f.email.errors.email">Please include an '@' in the email address
+        </div>
+      </div>
+      <!-- pattern="/^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/g" -->
+      <input type="tel" formControlName="phone" placeholder="Phone" maxlength="18" class="form-control form-input" [ngClass]="{ 'is-invalid': f.phone.invalid && f.phone.errors }">
+      <div *ngIf="f.phone.invalid && f.phone.errors" class="invalid-feedback">
+        <div *ngIf="f.phone.errors.required">Please fill out this field</div>
+        <!-- <div *ngIf="f.phone.errors.pattern">Please match the requested format: +(123) - 456-78-90</div> -->
+      </div>
+      <div class="checkbox" >
+        <input id="box1" type="checkbox" formControlName="isFavorite">
+      <label for="box1" *ngIf="contact.isFavorite===false">Add contact to favorite</label>
+      <label for="box1" *ngIf="contact.isFavorite===true">Remove contact from favorite</label>
+      </div>
+  
+      <select formControlName="category">
+          <option *ngFor="let category of categores" [ngValue]="category.name">
+            {{ category.abbrev }}
+          </option>
+      </select>
+      
+      <button type="submit" [disabled]="!contactForm.valid">Save</button>
+    </form>
+
+    <div class="avatar-modal" *ngIf="isModalOpen">
+      <fa-icon class="close-btn" (click)="toggleModal()" [icon]="faTimesCircle"></fa-icon>
+      <div class="img-container" [ngStyle]="{'background-image':'url(' + imageUrl + contact.img + imageFormat + ')'}">
+      </div>
+     <section class="imgs">
+      <div class="modal-img-container" *ngFor="let img of imgs" (click)="getImgNum(img)">
+        <div  [ngStyle]="{'background-image':'url(' + imageUrl + img + imageFormat + ')'}"></div>
+      </div>
+     </section>
+    </div>
+</div>
+

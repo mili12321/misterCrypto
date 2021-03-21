@@ -1,0 +1,180 @@
+
+
+@mixin flexCenter($direction){
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: $direction;
+}
+@mixin flex($direction,$content){
+    display: flex;
+    justify-content: $content;
+    align-items: center;
+    flex-direction: $direction;
+}
+$clr1: rgb(15, 52, 73);
+$clr3: rgb(206, 57, 114);
+
+a:link {
+    text-decoration: none;
+    color: rgb(230, 230, 230);
+}
+  
+a:visited {
+    color: rgb(230, 230, 230);
+    text-decoration: none;
+}
+a{
+    cursor: pointer;
+    transition: 0.2s;
+    &:hover{
+        color:$clr3;
+    }
+}
+
+a.active{
+    color:$clr3;
+}
+.user-logout-container{
+    .user-img{
+        width: 30px;
+        border: 1px solid $clr3;
+        border-radius: 50%;
+        margin-bottom: 5px;
+    }
+    margin-bottom: 10vh;
+    font-size: 11px;
+    @include flex(column,center);
+}
+
+@media only screen and (max-width:425px){
+    nav{
+        margin-bottom: 42px;
+        width: 100%;
+        background-color: #1a1a1a;
+        display: flex;
+        justify-content: center;
+       .nav-container{
+            text-align:center ;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            z-index: 999;
+            background-color: #1a1a1a;
+            width: 100%;
+            .logo, .links-container{
+                padding: 10px 20px;
+            }
+            .logo{
+                background-image: url('/assets/img/logo7.png');
+                padding: 0;
+                margin-left: 10px;
+                width: 70px;
+                height:40px;
+                background-position: center; 
+                background-repeat: no-repeat; 
+                background-size: cover;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                text-shadow: rgb(3, 3, 39) 1px 0 10px;
+                font-weight: bold;
+            
+            }
+            .links-container{
+                width:40%;
+                @include flex(row,space-between);
+                .user-logout-container{
+                    @include flex(row,center);
+                    margin-bottom: 0;
+                    .user-img{
+                        width: 20px;
+                        height: 20px;
+                        border: 1px solid $clr3;
+                        border-radius: 50%;
+                        margin-bottom: 0;
+                        margin-right: 5px;
+                    }
+                }
+            }
+       }
+    }
+}
+
+@media only screen and (min-width:425px){
+    nav{
+        min-width: 70px;
+        height: 100vh;
+        background-color: #1a1a1a;
+       .nav-container{
+        // box-shadow: 5px 0 5px -2px rgb(121, 121, 121);
+           text-align:center ;
+           display: flex;
+           flex-direction: column;
+           position: fixed;
+           background-color: #1a1a1a;
+           height:120vh;
+           width: 70px;
+           padding-top: 5vh;
+        }
+       .links-container{
+           margin-top: 8vh;
+           text-align:center ;
+        //    display: flex;
+        //    flex-direction: column;
+           @include flex(column,space-between);
+           height: 10vh;
+           .news-link{
+               margin-bottom: 30px;
+           }
+       }
+    }
+}
+
+.main-container{
+    margin: auto;
+    width: 100%;
+}
+
+
+.back-img-container{
+    background-position: center; 
+    background-repeat: no-repeat;
+    background-size: cover;
+    align-self: center;
+    align-items: center;
+    height: 30px;
+    background-color: rgb(223, 223, 223);
+} 
+.alert-container{
+    // background-color: red;
+    margin: 10px;
+    position: absolute;
+    z-index: 200;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo{
+    background-image: url('/assets/img/logo7.png');
+    width: 100%;
+    height: 70px;
+    background-position: center; 
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    // border: 1px solid;
+    // background-color: rgb(3, 3, 39);
+    div{
+        color: rgb(41, 172, 110);
+        color: rgb(201, 201, 201);
+    }
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-shadow: rgb(3, 3, 39) 1px 0 10px;
+    font-weight: bold;
+
+}
