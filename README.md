@@ -20,8 +20,8 @@ $ npm install
 
 > Get and set API key
 
-You will need to get an API key from here: `https://min-api.cryptocompare.com/`
-To set up your API key go to \src\app\services\bitcoin.service.ts 
+* You will need to get an API key from here: `https://min-api.cryptocompare.com/`.
+* To set up your API key go to \src\app\services\bitcoin.service.ts. 
 
 > Start JSON Server
 
